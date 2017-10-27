@@ -1,0 +1,57 @@
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="#">Onion Peeler</a>
+    </div>
+    <ul class="nav navbar-nav">
+    <!--  class="active" -->
+      <li {{#unless saved}}class="active"{{/unless}}>
+        <a href="/">Home</a>
+      </li>
+      <li {{#if saved}}class="active"{{/if}}>
+        <a href="/saved">Saved Articles</a>
+      </li>
+      {{#unless saved}}
+        <li><a href="/scrape">SCRAPE ARTICLES</a></li>
+      {{/unless}}
+    </ul>
+  </div>
+</nav>
+
+<div class="container" style="margin-top: 20px;">
+  <div class="jumbotron">
+    <center>
+      <h2>
+        <span class="glyphicon glyphicon-fire"></span>Article Scraper
+      </h2>
+      <h3>Scrape articles from The Onion</h3>
+    </center>
+  </div>
+
+  <div class="row">
+    {{#each articles}}    
+      {{> articles/article}}
+    {{/each}}
+  </div>
+</div>
+
+<div id="articleModal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">×</button>
+        <h2 class="modal-title" id="article-title"></h2>
+        <h3 class="modal-title" id="article-id"></h3>
+      </div>
+      <div class="modal-body">
+        <div id="article-notes"></div>
+        <form class="create-form">
+          <div class="form-group">
+            <textarea rows="4" cols="60" id="new-note" name="note"></textarea>
+          </div>
+          <button type="submit" class="add-note">Add Note</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,41 @@
+body {
+	background-color: #eee;
+}
+
+.panel-heading {
+	background-color: #ddd;
+}
+
+.panel-body {
+	padding: 5px;
+  margin: 5px;
+	background-color: #ccc;
+}
+
+.remove-saved, .remove-note {
+	background-color: #800;
+	color: #eee;
+}
+
+.add-saved, .add-note {
+	background-color: #080;
+	color: #eee;
+}
+
+.view-notes {
+	background-color: #008;
+	color: #eee;
+}
+
+#new-note {
+	background-color: #eee;
+	color: #111;
+}
+
+.label {
+  font-weight: bold;
+}
+
+.form-group {
+  margin-bottom: 5px;
+}
