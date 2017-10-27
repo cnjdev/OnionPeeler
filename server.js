@@ -32,7 +32,12 @@ app.set("view engine", "handlebars");
 // Set mongoose to leverage built in JavaScript ES6 Promises
 // Connect to the Mongo DB
 mongoose.Promise = Promise;
-mongoose.connect("mongodb://localhost/onionpeeler", {
+
+var databaseUri = "mongodb://localhost/onionpeeler";
+if (process.env.MONGODB_URI){
+  databaseUri = process.env.MONGODB_URI;
+}
+mongoose.connect(databaseUri, {
   useMongoClient: true
 });
 
@@ -69,16 +74,18 @@ app.get("/scrape", function(req, res) {
     }); // end each
 
     db.Article
-      .insertMany(scrapeArticles)
+      .insertMany(
+        scrapeArticles, 
+        {continueOnError: true, safe: true})
       .then(function(dbArticles) {
         // If we were able to successfully scrape and save an Article, send a message to the client
         res.redirect("/");
+      })
+      .catch(function(err) {
+        // If an error occurred, send it to the client
+        console.log(err);
+        res.redirect("/");
       });
-      // .catch(function(err) {
-      //   // If an error occurred, send it to the client
-      //   console.log(err);
-      //   res.redirect("/");
-      // });
 
   }); // end request
 
