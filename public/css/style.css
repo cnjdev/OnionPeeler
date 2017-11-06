@@ -2,14 +2,16 @@ body {
 	background-color: #eee;
 }
 
+.panel {
+	border: 0;
+}
+
 .panel-heading {
 	background-color: #ddd;
 }
 
 .panel-body {
-	padding: 5px;
-  margin: 5px;
-	background-color: #ccc;
+	background-color: #fff;
 }
 
 .remove-saved, .remove-note {
