@@ -96,6 +96,7 @@ app.get("/", function(req, res) {
   // Grab every document in the Articles collection
   db.Article
     .find({saved: false})
+    .sort({_id: -1})
     .then(function(dbArticles) {
       // If we were able to successfully find Articles, send them back to the client
       var hbsObject = {
@@ -115,6 +116,7 @@ app.get("/saved", function(req, res) {
   // Grab saved Articles
   db.Article
     .find({saved: true})
+    .sort({_id: -1})
     .then(function(dbArticles) {
       // If we were able to successfully find Articles, send them back to the client
       var hbsObject = {
