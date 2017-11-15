@@ -1,23 +1,23 @@
 <div class="panel">
   <div class="panel-heading">
-    <h3 class="panel-title">
+    <h2 class="panel-title">
       <a href="{{link}}" target="_blank">{{title}}</a>
-    </h3>
+    </h2>
   </div>
   <div class="panel-body">
     {{summary}}
     <br/>
     {{#if saved}}
       <button class="remove-saved" data-id="{{_id}}">
-        Remove
+        Remove from Saved Articles
       </button>
       <button class="view-notes" data-id="{{_id}}">
-        Notes
+        View Notes left on Article
       </button>
     {{/if}}
     {{#unless saved}}
       <button class="add-saved" data-id="{{_id}}">
-        Save
+        Add to Saved Articles
       </button>
     {{/unless}}
   </div>
